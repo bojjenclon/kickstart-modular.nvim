@@ -188,8 +188,19 @@ return {
               completion = {
                 callSnippet = 'Replace',
               },
+
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
+
+              -- Setup addons
+              workspace = {
+                userThirdParty = {
+                  '$HOME/.local/share/nvim/lsp/addons',
+                },
+                library = {
+                  '$HOME/.local/share/nvim/lsp/addons/xmake-luals-addons/library',
+                },
+              },
             },
           },
         },

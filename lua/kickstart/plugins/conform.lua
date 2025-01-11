@@ -20,9 +20,21 @@ return {
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
+        local disable_filenames = { ['xmake.lua'] = true }
         return {
           timeout_ms = 500,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+          lsp_fallback = function()
+            if disable_filetypes[vim.bo[bufnr].filetype] then
+              return false
+            end
+
+            local fname = vim.api.nvim_buf_get_name(bufnr):match '[^/]*.lua$'
+            if disable_filenames[fname] then
+              return false
+            end
+
+            return true
+          end,
         }
       end,
       formatters_by_ft = {
