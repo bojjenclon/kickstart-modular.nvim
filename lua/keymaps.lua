@@ -17,10 +17,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -30,6 +30,21 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- Buffer movement
+vim.keymap.set('n', '<TAB>', ':bn<CR>')
+vim.keymap.set('n', '<S-TAB>', ':bp<CR>')
+vim.keymap.set('n', '<leader>bd', ':bd<CR>')
+
+vim.keymap.set('n', '<leader><Right>', ':bn<CR>')
+vim.keymap.set('n', '<leader><Left>', ':bp<CR>')
+
+-- LSP commands
+vim.keymap.set('n', '<leader>gd', ':lua vim.lsp.buf.definition()<CR>')
+vim.keymap.set('n', '<leader>gi', ':lua vim.lsp.buf.implementation()<CR>')
+vim.keymap.set('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
+vim.keymap.set('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
+vim.keymap.set('n', '<leader>gr', ':lua vim.lsp.buf.references()<CR>')
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
